@@ -2,8 +2,7 @@ import { Outlet } from "react-router-dom";
 
 function AuthLayout() {
   return (
-    <div>
-      <h1>AuthLayout</h1>
+    <div className="h-screen pt-[25vh]">
       <Outlet />
     </div>
   );
