@@ -6,6 +6,7 @@ import Login from "../components/Login/Login";
 import DashBoardLayout from "../shared/DashBoardLayout/DashBoardLayout";
 import DashBoard from "../components/DashBoard/DashBoard";
 import { AuthContext } from "../context/AuthContext.jsx";
+import { Sales } from "../components/Sales/Sales.jsx";
 
 function Routes() {
   const { accessToken } = useContext(AuthContext);
@@ -23,6 +24,10 @@ function Routes() {
         {
           path: PATH.DASHBOARD,
           element: <DashBoard />,
+        },
+        {
+          path: PATH.SALES,
+          element: <Sales />,
         },
       ],
     },

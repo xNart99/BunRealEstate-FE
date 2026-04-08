@@ -1,4 +1,5 @@
 import { getCookie } from "../utils/cookie";
+import { generateToken } from "../utils/generateToken";
 
 export const mockRefreshToken = () => {
   const refreshToken = getCookie("refreshToken");
@@ -10,7 +11,7 @@ export const mockRefreshToken = () => {
     };
   }
 
-  if (refreshToken !== "REFRESH_TOKEN_ABC") {
+  if (refreshToken !== "rftoken1235151515") {
     return {
       status: 403,
       message: "Invalid refresh token",
@@ -20,7 +21,7 @@ export const mockRefreshToken = () => {
   return {
     status: "success",
     data: {
-      accessToken: "ACCESS_TOKEN_NEW_" + Date.now(),
+      accessToken: "ACCESS_TOKEN_NEW_" + generateToken(16),
     },
   };
 };

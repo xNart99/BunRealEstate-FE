@@ -29,7 +29,7 @@ const Login = () => {
       return;
     }
 
-    console.log(res.token.accessToken);
+    console.log("access Token", res.token.accessToken);
     setAccessToken(res.token.accessToken);
     setCookie("refreshToken", res.token.refreshToken);
     setCookie("email", res.data.email);

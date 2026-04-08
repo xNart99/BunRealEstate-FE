@@ -13,10 +13,13 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { getCookie } from "../../utils/cookie";
+import { PATH } from "../../routes/path";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const [selected, setSelected] = useState("Dashboard");
+  const navigate = useNavigate();
 
   return (
     <nav
@@ -33,6 +36,9 @@ const Sidebar = () => {
           selected={selected}
           setSelected={setSelected}
           open={open}
+          onClick={() => {
+            navigate(PATH.DASHBOARD);
+          }}
         />
         <Option
           Icon={DollarSign}
@@ -41,6 +47,9 @@ const Sidebar = () => {
           setSelected={setSelected}
           open={open}
           notifs={3}
+          onClick={() => {
+            navigate(PATH.SALES);
+          }}
         />
         <Option
           Icon={ShoppingCart}
@@ -100,13 +109,23 @@ const Sidebar = () => {
   );
 };
 
-// eslint-disable-next-line no-unused-vars
-const Option = ({ Icon, title, selected, setSelected, open, notifs }) => {
+const Option = ({
+  // eslint-disable-next-line no-unused-vars
+  Icon,
+  title,
+  selected,
+  setSelected,
+  open,
+  notifs,
+  onClick,
+}) => {
   const isSelected = selected === title;
 
   return (
     <button
-      onClick={() => setSelected(title)}
+      onClick={() => {
+        (setSelected(title), onClick && onClick());
+      }}
       className={`relative flex h-11 w-full items-center rounded-md transition-all duration-200 ${
         isSelected
           ? "bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 shadow-sm border-l-2 border-blue-500"
