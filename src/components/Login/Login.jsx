@@ -10,8 +10,13 @@ import {
 import TextField from "@mui/material/TextField";
 
 import { Controller, useForm } from "react-hook-form";
+import { mockLogin } from "../../mocksapi/mockLogin";
+import { setCookie } from "../../utils/cookie";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext.jsx";
 
 const Login = () => {
+  const { setAccessToken } = useContext(AuthContext);
   const {
     control,
     handleSubmit,
@@ -19,7 +24,19 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const res = mockLogin(data);
+    if (res.status == "error") {
+      console.error("Login Failed: ", res);
+      return;
+    }
+
+    console.log(res.token.accessToken);
+    setAccessToken(res.token.accessToken);
+    setCookie("refreshToken", res.token.refreshToken);
+    setCookie("email", JSON.stringify(res.data.email));
+    setCookie("fullname", JSON.stringify(res.data.fullname));
+
+    console.log("Login sucessfull: ", res);
   };
   return (
     <section className="flex justify-center">

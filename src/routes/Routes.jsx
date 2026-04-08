@@ -1,17 +1,20 @@
 import { useRoutes, Navigate, useLocation } from "react-router-dom";
 import { PATH } from "./path";
+import { useContext } from "react";
 import AuthLayout from "../shared/AuthLayout/AuthLayout";
 import Login from "../components/Login/Login";
 import DashBoardLayout from "../shared/DashBoardLayout/DashBoardLayout";
 import DashBoard from "../components/DashBoard/DashBoard";
-import isAuthenticate from "../utils/functionCommon";
+import { AuthContext } from "../context/AuthContext.jsx";
 
 function Routes() {
+  const { accessToken } = useContext(AuthContext);
   const location = useLocation();
-  return useRoutes([
+
+  const routing = useRoutes([
     {
       path: PATH.ROOT,
-      element: isAuthenticate() ? (
+      element: accessToken ? (
         <DashBoardLayout />
       ) : (
         <Navigate to={PATH.LOGIN} state={{ from: location }} />
@@ -29,7 +32,7 @@ function Routes() {
       children: [
         {
           path: PATH.LOGIN,
-          element: isAuthenticate() ? (
+          element: accessToken ? (
             <Navigate to={PATH.DASHBOARD} state={{ from: location }} />
           ) : (
             <Login />
@@ -38,6 +41,9 @@ function Routes() {
       ],
     },
   ]);
+
+  // if (loading) return <div>Loading..</div>;
+  return routing;
 }
 
 export default Routes;

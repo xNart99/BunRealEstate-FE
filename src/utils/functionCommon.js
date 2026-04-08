@@ -1,7 +1,8 @@
-import { getCookie, KEY } from "./cookie";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext.jsx";
 
-export default function isAuthenticate() {
-  const accessToken = getCookie(KEY.TOKEN);
+export default function useAuthenticate() {
+  const { accessToken } = useContext(AuthContext);
 
-  return !!accessToken && accessToken != null;
+  return !!accessToken;
 }
