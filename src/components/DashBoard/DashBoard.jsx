@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/purity */
 import {
   Activity,
   Bell,
@@ -67,7 +68,7 @@ const DashBoard = () => {
               Total Sales
             </h3>
             <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-              $24,567
+              $2,456,700
             </p>
             <p className="text-sm text-green-600 dark:text-green-400 mt-1">
               +12% from last month
@@ -85,7 +86,7 @@ const DashBoard = () => {
               Active Users
             </h3>
             <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-              1,234
+              124
             </p>
             <p className="text-sm text-green-600 dark:text-green-400 mt-1">
               +5% from last week
@@ -100,10 +101,10 @@ const DashBoard = () => {
               <TrendingUp className="h-4 w-4 text-green-500" />
             </div>
             <h3 className="font-medium text-gray-600 dark:text-gray-400 mb-1">
-              Orders
+              Properties Sold
             </h3>
             <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-              456
+              56
             </p>
             <p className="text-sm text-green-600 dark:text-green-400 mt-1">
               +8% from yesterday
@@ -118,7 +119,7 @@ const DashBoard = () => {
               <TrendingUp className="h-4 w-4 text-green-500" />
             </div>
             <h3 className="font-medium text-gray-600 dark:text-gray-400 mb-1">
-              Products
+              Available Properties
             </h3>
             <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
               89
@@ -136,7 +137,7 @@ const DashBoard = () => {
             <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-sm">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                  Recent Activity
+                  Recent Property Activity
                 </h3>
                 <button className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
                   View all
@@ -146,36 +147,36 @@ const DashBoard = () => {
                 {[
                   {
                     icon: DollarSign,
-                    title: "New sale recorded",
-                    desc: "Order #1234 completed",
+                    title: "Property sold",
+                    desc: "12 Smith St, Sydney sold",
                     time: "2 min ago",
                     color: "green",
                   },
                   {
                     icon: User,
-                    title: "New user registered",
-                    desc: "john.doe@example.com joined",
+                    title: "New listing added",
+                    desc: "45 George St listed",
                     time: "5 min ago",
                     color: "blue",
                   },
                   {
                     icon: Package,
-                    title: "Product updated",
-                    desc: "iPhone 15 Pro stock updated",
+                    title: "Price updated",
+                    desc: "Apartment in CBD reduced",
                     time: "10 min ago",
                     color: "purple",
                   },
                   {
                     icon: Activity,
-                    title: "System maintenance",
-                    desc: "Scheduled backup completed",
+                    title: "Inspection scheduled",
+                    desc: "Open house booked",
                     time: "1 hour ago",
                     color: "orange",
                   },
                   {
                     icon: Bell,
-                    title: "New notification",
-                    desc: "Marketing campaign results",
+                    title: "New enquiry received",
+                    desc: "Buyer requested info",
                     time: "2 hours ago",
                     color: "red",
                   },
@@ -232,12 +233,12 @@ const DashBoard = () => {
           <div className="space-y-6">
             <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-sm">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                Quick Stats
+                Market Insights
               </h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600 dark:text-gray-400">
-                    Conversion Rate
+                    Lead to Sale Rate
                   </span>
                   <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
                     3.2%
@@ -252,7 +253,7 @@ const DashBoard = () => {
 
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600 dark:text-gray-400">
-                    Bounce Rate
+                    Drop-off Rate
                   </span>
                   <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
                     45%
@@ -267,7 +268,7 @@ const DashBoard = () => {
 
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600 dark:text-gray-400">
-                    Page Views
+                    Property Views
                   </span>
                   <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
                     8.7k
@@ -284,14 +285,14 @@ const DashBoard = () => {
 
             <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-sm">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                Top Products
+                Top Properties
               </h3>
               <div className="space-y-3">
                 {[
-                  "iPhone 15 Pro",
-                  "MacBook Air M2",
-                  "AirPods Pro",
-                  "iPad Air",
+                  "Luxury Apartment",
+                  "Beach House – Bondi",
+                  "Family Home – Parramatta",
+                  "Studio Apartment – Newtown",
                 ].map((product, i) => (
                   <div
                     key={i}
@@ -301,7 +302,7 @@ const DashBoard = () => {
                       {product}
                     </span>
                     <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                      ${Math.floor(Math.random * 1000 + 500)}
+                      ${Math.floor(Math.random() * 1001 + 500)}
                     </span>
                   </div>
                 ))}
