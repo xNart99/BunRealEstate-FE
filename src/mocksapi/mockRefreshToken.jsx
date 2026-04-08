@@ -11,17 +11,21 @@ export const mockRefreshToken = () => {
     };
   }
 
-  if (refreshToken !== "rftoken1235151515") {
+  if (!refreshToken.startsWith("refresh_token_")) {
     return {
       status: 403,
       message: "Invalid refresh token",
     };
   }
 
+  const newAccessToken = "access_token_" + generateToken(16);
+  const newRefreshToken = "refresh_token_" + generateToken(16);
+
   return {
     status: "success",
     data: {
-      accessToken: "ACCESS_TOKEN_NEW_" + generateToken(16),
+      accessToken: newAccessToken,
+      refreshToken: newRefreshToken,
     },
   };
 };
