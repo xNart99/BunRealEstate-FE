@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Typography,
   Box,
   Grid,
 } from "@mui/material";
@@ -33,8 +32,9 @@ const Login = () => {
     console.log(res.token.accessToken);
     setAccessToken(res.token.accessToken);
     setCookie("refreshToken", res.token.refreshToken);
-    setCookie("email", JSON.stringify(res.data.email));
-    setCookie("fullname", JSON.stringify(res.data.fullname));
+    setCookie("email", res.data.email);
+    setCookie("fullname", res.data.fullname);
+    setCookie("role", res.data.role);
 
     console.log("Login sucessfull: ", res);
   };
